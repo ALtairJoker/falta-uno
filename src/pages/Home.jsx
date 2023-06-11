@@ -1,10 +1,27 @@
 import React from 'react'
 import Context from '../../Context';
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import "./css/home.css";
 
 function Home() {
   const { usuario } = useContext(Context);
+
+  const [jugadores, setJugadores] = useState([]);
+
+  useEffect(() => {
+    obtenerJugadores();
+  }, []);
+
+  const obtenerJugadores = async () => {
+    try {
+      const response = await fetch('http://localhost:3000/jugadores');
+      const data = await response.json();
+      setJugadores(data.result);
+      console.log(jugadores);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const fechaNacimiento = new Date(usuario.nacimiento);
   const fechaActual = new Date();
@@ -29,7 +46,7 @@ function Home() {
   return (
     <div className='contenedor-principal'>
       <div className='orden'>
-        <div className='jugadorUsuario contenedor-form'>
+        <div className='jugadorUsuario '>
           <h3>Bienvenido</h3>
           <h2 className='nombreUsuario'>{(usuario.usuario).charAt(0).toUpperCase() + (usuario.usuario).slice(1)} {usuario.dorsal}</h2>
           <img src={`data:image/jpeg;base64,${usuario.foto_perfil}`} alt="" className='imagenUsuario' />
@@ -46,8 +63,17 @@ function Home() {
             <h4 className='nombreUsuario'>¡Feliz cumpleaños!</h4>
           )}
         </div>
-        <div className='jugadores'>
-          <h1>Jugadores</h1>
+        <div >
+          <h2>Jugadores</h2>
+          <div className='jugadores' >
+          {jugadores.map((jugador) => (
+            <div key={jugador.id} >
+              <h2>{jugador.nombre} {jugador.apellido}</h2>
+              <img src={`data:image/jpeg;base64,${jugador.foto_perfil}`} alt="" className='imagenUsuario' />
+              {/* Mostrar otros datos del jugador */}
+            </div>
+          ))}
+        </div>
         </div>
       </div>
       

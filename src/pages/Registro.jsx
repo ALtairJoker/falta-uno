@@ -78,9 +78,7 @@ function Registro() {
       const resizedImage = await resizeAndCompressImage(file); // Realiza la compresión de la imagen
       const base64Image = resizedImage.replace(/^data:image\/[a-z]+;base64,/, '');
       userData.fotoPerfil = base64Image; // Agrega la imagen comprimida sin el prefijo al objeto userData
-      console.log("Tamaño de la imagen comprimida:", resizedImage.length)
       localStorage.setItem('usuario', JSON.stringify(userData));
-      console.log(userData);
       navigate("/registro2", { state: { usuario: userData } });
       setLoading(false);
     }

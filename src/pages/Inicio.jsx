@@ -34,7 +34,6 @@ function Inicio() {
         const fotoPerfilBase64 = datosUsuario.foto_perfil.replace(/^data:image\/[a-z]+;base64,/, '');
         const datosUsuario2 = { ...datosUsuario, foto_perfil: fotoPerfilBase64 }; // Actualizar los datos del usuario
         setUsuario(datosUsuario2);
-        console.log(datosUsuario2);
         navigate("/home");
       } catch (error) {
         const message = error.message || "Ocurrió un error";
