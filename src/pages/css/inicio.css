@@ -1,0 +1,163 @@
+.contenedor-principal {
+  color: #fff;
+  position:relative;
+  background-image: linear-gradient(
+  50deg,
+  hsl(223deg 100% 6%) 0%,
+  hsl(212deg 100% 9%) 8%,
+  hsl(202deg 100% 12%) 17%,
+  hsl(192deg 100% 15%) 25%,
+  hsl(182deg 100% 19%) 33%,
+  hsl(171deg 100% 22%) 42%,
+  hsl(161deg 100% 25%) 50%,
+  hsl(171deg 100% 22%) 58%,
+  hsl(182deg 100% 19%) 67%,
+  hsl(192deg 100% 15%) 75%,
+  hsl(202deg 100% 12%) 83%,
+  hsl(212deg 100% 9%) 92%,
+  hsl(223deg 100% 6%) 100%
+);
+  background-size: cover;
+  width: 100%;
+  min-height: 100vh;
+  padding: 0%;
+  margin: 0%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 5em;
+}
+
+
+.contenedor-form {
+  animation: opacidad 4s 1 forwards;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 350px;
+  color: aliceblue;
+  border-radius: 6px;
+  background-color: transparent;
+  padding: 1em 0;
+  border: 2px solid transparent;
+  border-radius: 30px;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 1),
+    -1px -1px 6px rgba(255, 255, 255, 0.4), inset 3px 3px 10px rgba(0, 0, 0, 1),
+    inset -1px -1px 6px rgba(255, 255, 255, 0.4);
+}
+
+@keyframes opacidad {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.container1 {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  margin: 1.5rem;
+}
+
+.container1 .label1 {
+  font-size: 15px;
+  padding-left: 10px;
+  position: absolute;
+  top: 13px;
+  transition: 0.3s;
+  pointer-events: none;
+}
+
+.input1 {
+  width: 200px;
+  height: 45px;
+  border: none;
+  outline: none;
+  padding: 0px 7px;
+  border-radius: 6px;
+  color: #fff;
+  font-size: 15px;
+  background-color: transparent;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 1),
+    -1px -1px 6px rgba(255, 255, 255, 0.4);
+}
+
+.input1:focus {
+  border: 2px solid transparent;
+  color: #fff;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 1),
+    -1px -1px 6px rgba(255, 255, 255, 0.4), inset 3px 3px 10px rgba(0, 0, 0, 1),
+    inset -1px -1px 6px rgba(255, 255, 255, 0.4);
+}
+
+.input1:valid ~ .label1,
+.input1:focus ~ .label1 {
+  transition: 0.3s;
+  padding-left: 2px;
+  transform: translateY(-35px);
+} 
+
+.input1:valid,
+.input1:focus {
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 1),
+    -1px -1px 6px rgba(255, 255, 255, 0.4), inset 3px 3px 10px rgba(0, 0, 0, 1),
+    inset -1px -1px 6px rgba(255, 255, 255, 0.4);
+} 
+
+.btn1 {
+  font-size: 0.7rem;
+  padding: .8rem 2.5rem;
+  border: none;
+  outline: none;
+  border-radius: 0.4rem;
+  cursor: pointer;
+  text-transform: uppercase;
+  background-color: rgb(14, 14, 26);
+  color: rgb(234, 234, 234);
+  font-weight: 700;
+  -webkit-transition: 0.6s;
+  transition: 0.6s;
+  -webkit-box-shadow: 0px 0px 60px #1f4c65;
+  box-shadow: 0px 0px 60px #1f4c65;
+  -webkit-box-reflect: below 5px
+    linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.4));
+}
+
+.btn1:active {
+  scale: 0.92;
+}
+
+.btn1:hover {
+  background: rgb(2, 29, 78);
+  background: -webkit-gradient(
+    linear,
+    right top,
+    left top,
+    from(rgba(2, 29, 78, 0.681)),
+    color-stop(60%, rgba(31, 215, 232, 0.873))
+  );
+  background: linear-gradient(
+    270deg,
+    rgba(2, 29, 78, 0.681) 0%,
+    rgba(31, 215, 232, 0.873) 60%
+  );
+  color: rgb(4, 4, 38);
+}
+
+@media (max-width: 992px) {
+  .contenedor-principal {
+    background-size: cover;
+  }
+
+}
+
+@media (max-width: 576px) {
+  .contenedor-principal {
+    background-size: cover;
+  }
+}

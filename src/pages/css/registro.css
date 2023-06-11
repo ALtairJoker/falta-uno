@@ -1,0 +1,98 @@
+.contenedor-registro {
+  animation: opacidad 4s 1 forwards;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  color: aliceblue;
+  border-radius: 6px;
+  background-color: transparent;
+  padding: 1em 0;
+  border: 2px solid transparent;
+  border-radius: 30px;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 1),
+    -1px -1px 6px rgba(255, 255, 255, 0.4), inset 3px 3px 10px rgba(0, 0, 0, 1),
+    inset -1px -1px 6px rgba(255, 255, 255, 0.4);
+}
+
+.inputs {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.selects {
+  background-color: transparent;
+  color: #fff;
+  margin: 1em 1em;
+  border: 2px solid transparent;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 1),
+    -1px -1px 6px rgba(255, 255, 255, 0.4), inset 3px 3px 10px rgba(0, 0, 0, 1),
+    inset -1px -1px 6px rgba(255, 255, 255, 0.4);
+  border-radius: 6px;
+}
+
+select,
+option {
+  background-color: rgb(1, 75, 75);
+}
+
+
+.input1Number{
+  width: 4rem;
+  height: 45px;
+  border: none;
+  outline: none;
+  padding: 0px 7px;
+  border-radius: 6px;
+  color: #fff;
+  font-size: 15px;
+  background-color: transparent;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 1),
+    -1px -1px 6px rgba(255, 255, 255, 0.4);
+}
+
+.input1Number:focus {
+  border: 2px solid transparent;
+  color: #fff;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 1),
+    -1px -1px 6px rgba(255, 255, 255, 0.4), inset 3px 3px 10px rgba(0, 0, 0, 1),
+    inset -1px -1px 6px rgba(255, 255, 255, 0.4);
+}
+
+
+.input1Number:valid,
+.input1Number:focus {
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 1),
+    -1px -1px 6px rgba(255, 255, 255, 0.4), inset 3px 3px 10px rgba(0, 0, 0, 1),
+    inset -1px -1px 6px rgba(255, 255, 255, 0.4);
+} 
+
+
+@media (max-width: 992px) {
+  .inputs {
+    display: flex;
+    flex-direction: column;
+  }
+  .contenedor-registro {
+    margin: 1em 1em;
+  }
+
+}
+
+@media (max-width: 576px) {
+  .inputs {
+    display: flex;
+    flex-direction: column;
+  }
+  .contenedor-registro {
+    margin: 1em 1em;
+  }
+}
+
+.error{
+  color: white;
+  background-color: crimson;
+  padding: 3px;
+  margin-top: 2px;
+}
