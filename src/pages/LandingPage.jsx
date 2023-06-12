@@ -8,11 +8,6 @@ function LandingPage() {
 
   return (
     <div className="contenedor-principal">
-      
-      <div className="ordenInicio">
-        <div className="imagenPng-left">
-          <img src=".././public/img/buscando.png" alt="" />
-        </div>
         <div className="contenedor-header pt-1">
         <h2 className="h1-animation-iz p-2">¿Te falta un jugador en tu equipo?</h2>
         <br />
@@ -22,10 +17,6 @@ function LandingPage() {
         </h3>
         <button className='botonLanding' onClick={() => {navigate("/inicio");}}>ME FALTA UNO</button>
       </div>
-      <div className="imagenPng-right">
-          <img src=".././public/img/buscando.png" alt="" />
-        </div>
-      </div>    
     </div>
   )
 }

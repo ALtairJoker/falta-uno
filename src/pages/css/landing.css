@@ -38,52 +38,6 @@
     text-shadow: 0px 0px 18px rgba(0,200,231,1);
   }
   
-  .ordenInicio{
-    display: flex;
-  
-  }
-  
-  .imagenPng-left img{
-    height: 300px;
-    transform: rotateY(180deg);
-    margin-top: 2.5em;
-    margin-right: 4em;
-    opacity: 0.4; 
-    animation: girarpng-left 4s infinite;
-  }
-  
-  @keyframes girarpng-left {
-    0% {
-      transform: rotateY(0deg);
-    }
-    50%{
-      transform: rotateY(180deg);
-    }
-    100%{
-      transform: rotateY(0deg);
-    }
-  }
-  
-  .imagenPng-right img{
-    height: 300px;
-    margin-top: 2.5em;
-    margin-left: 4em;
-    opacity: 0.4; 
-    animation: girarpng-right 4s infinite;
-  }
-  
-  @keyframes girarpng-right {
-    0% {
-      transform: rotateY(180deg);
-    }
-    50%{
-      transform: rotateY(0deg);
-    }
-    100%{
-      transform: rotateY(180deg);
-    }
-  }
-
 
 
 .botonLanding {

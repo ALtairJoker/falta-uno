@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import {useForm} from 'react-hook-form'
 import Resizer from "react-image-file-resizer";
 import Loaders from '../components/Loaders'
+import Locaciones from "../components/Locaciones";
 
 function Registro() {
 
@@ -16,24 +17,10 @@ function Registro() {
 
   const [usuarioExistente, setUsuarioExistente] = useState(false);
 
-  const [locaciones, setLocaciones] = useState([]);
-  const [regionSeleccionada, setRegionSeleccionada] = useState("");
-  const [comunas, setComunas] = useState([]);
-
   useEffect(() => {
-    obtenerLocaciones();
     cargarDatosGuardados();
   }, []);
 
-  const obtenerLocaciones = async () => {
-    try {
-      const response = await fetch("../locaciones.json");
-      const data = await response.json();
-      setLocaciones(data.regions);
-    } catch (error) {
-      alert(error);
-    }
-  };
 
   const cargarDatosGuardados = () => {
     const usuarioGuardado = localStorage.getItem('usuario');
@@ -46,19 +33,7 @@ function Registro() {
   }; 
 
 
-  const handleChangeRegion = (e) => {
-    const region = e.target.value;
-    setRegionSeleccionada(region);
-
-    // Filtrar las comunas correspondientes a la región seleccionada
-    const regionSeleccionadaData = locaciones.find(
-      (locacion) => locacion.name === region
-    );
-    const comunasDeRegionSeleccionada = regionSeleccionadaData
-      ? regionSeleccionadaData.communes
-      : [];
-    setComunas(comunasDeRegionSeleccionada);
-  };
+ 
 
   const onSubmit = async (data) => {
     setLoading(true);
@@ -224,46 +199,7 @@ function Registro() {
             <label className="label1">Numero celular</label>
           </div>
         </div>
-        <div className="contenedor-selects">
-          <label>
-            {" "}
-            Region
-            <select
-              {...register('region', {
-                required: true
-              })}
-              value={regionSeleccionada}
-              onChange={handleChangeRegion}
-              className="selects p-2"
-              
-            >
-              <option hidden selected>
-                Seleccione una region
-              </option>
-              {locaciones.map((locacion) => (
-                <option value={locacion.name} key={locacion.name}>
-                  {locacion.name}
-                </option>
-              ))}
-            </select>
-          </label>
-          <label>
-            {" "}
-            Comuna
-            <select className="selects p-2" {...register('comuna', {
-                required: true
-              })}>
-              <option hidden selected>
-                Seleccione su comuna
-              </option>
-              {comunas.map((comuna) => (
-                <option value={comuna.name} key={comuna.name}>
-                  {comuna.name}
-                </option>
-              ))}
-            </select>
-          </label>
-        </div>
+        <Locaciones register={register}/>
         <label className="label1">Foto de Perfil <span>(max. 10MB)</span> </label>
         <input
               type="file"

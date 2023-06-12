@@ -1,0 +1,39 @@
+.contornoCard {
+    padding: 5px;
+    background: #00000025;
+    position: relative;
+    display: flex;
+    place-content: center;
+    place-items: center;
+    overflow: hidden;
+    border-radius: 20px;
+    box-shadow: 0px 0px 70px -7px rgba(182,69,241,0.43);
+-webkit-box-shadow: 0px 0px 70px -7px rgba(182,69,241,0.43);
+-moz-box-shadow: 0px 0px 70px -7px rgba(182,69,241,0.43);
+  }
+
+  .contornoCard::before {
+    content: '';
+    position: absolute;
+    width: 8em;
+    background-image: linear-gradient(180deg, rgba(153, 205, 50, 0.558), rgba(0, 229, 255, 0.514));
+    height: 130%;
+    animation: rotBGimg 6s linear infinite;
+    transition: all 0.2s linear;
+  }
+  
+  @keyframes rotBGimg {
+    from {
+      transform: rotate(0deg);
+    }
+  
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  .imagenCard{
+    width: 15em;
+  }
+
+  

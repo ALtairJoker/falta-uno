@@ -10,6 +10,7 @@ import Navegation from './components/Navegation';
 import { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+
 function App() {
 
   const [usuario, setUsuario] = useState(null);
@@ -21,7 +22,7 @@ function App() {
     <div>
       <Context.Provider value={{ usuario, setUsuario }} >
         <Router>
-          <Navegation />
+            <Navegation />
           <Routes>
           <Route path="/" element={<LandingPage />} />
             <Route path="/inicio" element={<Inicio />} />
