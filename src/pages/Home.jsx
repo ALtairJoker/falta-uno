@@ -1,19 +1,19 @@
 import React from 'react';
 import Context from '../../Context';
-import { useState, useContext, useEffect, useRef } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import axios from "axios";
 import './css/home.css';
 import Loaders from '../components/Loaders'
 import Locaciones from '../components/Locaciones';
 import Cards from '../components/Cards';
-import {useForm} from 'react-hook-form'
+import {useForm} from 'react-hook-form';
 
 function Home() {
-  const { usuario, token } = useContext(Context);
+  const { usuario, token, jugadores, setJugadores } = useContext(Context);
 
   const {register, formState: {errors} ,handleSubmit, setValue, watch  } = useForm();
 
-  const [jugadores, setJugadores] = useState([]);
+ 
   const [total, setTotal] = useState('');
   const [cargando, setCargando] = useState(false);
   const [paginaActual, setPaginaActual] = useState(1);
@@ -146,6 +146,7 @@ const totalPages = Math.ceil(total / jugadoresPorPagina);
                     dorsal={jugador.dorsal}
                     nacimiento={jugador.nacimiento}
                     posiciones={jugador.posiciones}
+                    id={jugador.id}
                   />
                 ))
               )}

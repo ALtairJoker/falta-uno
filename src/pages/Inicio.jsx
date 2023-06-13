@@ -68,8 +68,6 @@ function Inicio() {
         <label className="label1">Contraseña</label>
       </div>
         <button class="btn1 mb-5" onClick={login}>Ingresar</button>
-        {/* <h3>O</h3>
-        <button class="btn1" onClick={() => navigate('/registro')}>Registrar</button> */}
       </div>
       
     </div>

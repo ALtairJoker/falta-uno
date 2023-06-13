@@ -1,8 +1,11 @@
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import "./css/cards.css";
+import { useNavigate } from "react-router-dom";
 
-function BasicExample( {image, usuario, dorsal, nacimiento, posiciones} ) {
+function BasicExample( {image, usuario, dorsal, nacimiento, posiciones, id} ) {
+
+    const navigate = useNavigate();
 
     const fechaNacimiento = new Date(nacimiento);
     const fechaActual = new Date();
@@ -47,7 +50,7 @@ function BasicExample( {image, usuario, dorsal, nacimiento, posiciones} ) {
                 ))}
             </Card.Text>
             {esCumpleaños && <h4 className='nombreUsuario'>¡Feliz cumpleaños!</h4>}
-            <Button variant="secondary">Contacto</Button>
+            <Button variant="success" onClick={() => navigate(`/jugador/${id}`)}>Fichar</Button>
         </Card.Body>
         </Card>
     </div>
@@ -55,3 +58,4 @@ function BasicExample( {image, usuario, dorsal, nacimiento, posiciones} ) {
 }
 
 export default BasicExample;
+

@@ -4,7 +4,7 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import "./css/navegation.css";
 import { NavLink, useNavigate } from "react-router-dom";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import Context from "../../Context";
 
 
@@ -19,19 +19,45 @@ function Navegation() {
     localStorage.removeItem("token");
     navigate("/inicio");
   };
+
+  const [isNavbarVisible, setIsNavbarVisible] = useState(true);
+
+  useEffect(() => {
+    let prevScrollPos = window.pageYOffset;
+    const threshold = 50; // Ajusta el valor según tus necesidades
+
+    const handleScroll = () => {
+      const currentScrollPos = window.pageYOffset;
+      const isScrollingUp = prevScrollPos > currentScrollPos;
+
+      setIsNavbarVisible(
+        currentScrollPos < threshold || (isScrollingUp && currentScrollPos === 0)
+      );
+
+      prevScrollPos = currentScrollPos;
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+  
   return (
     
     <Navbar
+    className={`navbar ${isNavbarVisible ? "visible" : "hidden"}`}
       collapseOnSelect
       expand="lg"
       bg="transparent"
       variant="dark"
       fixed="top"
     >
-      <Container className="mt-3 position-relative">
+      <Container className="mt-3" >
         <Navbar.Brand to="/inicio">
         <NavLink  to="/" className={setActiveClass}>
-                  <p className="logoNav">FALTA-UNO <i class='bx bx-football bx-lg bx-tada '></i></p> 
+                  <p className="logoNav" onClick={logout}>FALTA-UNO <i class='bx bx-football bx-lg bx-tada '></i></p> 
                 </NavLink>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
@@ -51,9 +77,6 @@ function Navegation() {
               <Nav>
                 <NavLink to="/home" className={setActiveClass}>
                   <p className="deco me-5">BUSCAR JUGADORES <i class='bx bx-body bx-sm bx-tada-hover'></i></p>
-                </NavLink>
-                <NavLink to="/publicaciones" className={setActiveClass}>
-                  <p className="deco me-5">PUBLICACIONES <i class='bx bx-message bx-sm bx-tada-hover'></i></p>
                 </NavLink>
                 <NavLink to="/perfil" className={setActiveClass}>
                   <p className="deco me-5">PERFIL <i class='bx bxs-user bx-sm bx-tada-hover'></i></p>

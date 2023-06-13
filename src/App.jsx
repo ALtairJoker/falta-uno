@@ -5,6 +5,8 @@ import Home from './pages/Home';
 import Registro from './pages/Registro';
 import Registro2 from './pages/Registro2';
 import LandingPage from './pages/LandingPage';
+import Contacto from './pages/Contacto';
+import About from './pages/About';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navegation from './components/Navegation';
 import { useState } from 'react';
@@ -15,11 +17,12 @@ function App() {
 
   const [usuario, setUsuario] = useState(null);
   const [token, setToken] = useState(null);
+  const [jugadores, setJugadores] = useState([]);
 
 
   return (
     <div>
-      <Context.Provider value={{ usuario, setUsuario, token, setToken }} >
+      <Context.Provider value={{ usuario, setUsuario, token, setToken, jugadores, setJugadores }} >
         <Router>
             <Navegation />
           <Routes>
@@ -28,6 +31,8 @@ function App() {
             <Route path="/home" element={<Home />} />
             <Route path="/registro" element={<Registro />} />
             <Route path="/registro2" element={<Registro2 />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/jugador/:id" element={<Contacto />} />
           </Routes>
         </Router>
       </Context.Provider>

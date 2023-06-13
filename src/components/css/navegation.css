@@ -42,3 +42,16 @@
   .boton-cerrar:hover {
     color: brown;
   }
+
+  .navbar {
+    transition: transform 0.3s;
+  }
+  
+  .navbar.visible {
+    transform: translateY(0);
+  }
+  
+  .navbar.hidden {
+    transform: translateY(-100%);
+  }
+  

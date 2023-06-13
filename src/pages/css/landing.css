@@ -93,3 +93,58 @@
   .botonLanding:hover:before {
     transform: translateX(15em);
   }
+
+  .btn2 {
+    font-size: 17px;
+    background: transparent;
+    border: none;
+    padding: 1em 1.5em;
+    color: #ffedd3;
+    text-transform: uppercase;
+    position: relative;
+    transition: .5s ease;
+    animation: opacidadBoton 4s 1 forwards;
+  }
+
+  
+  @keyframes opacidadBoton {
+    0% {
+      opacity: 0;
+    }
+    50% {
+      opacity: 0;
+    }
+    75% {
+        opacity: 0;
+      }
+    100% {
+        opacity: 1;
+    }
+
+  }
+  
+  .btn2::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 2px;
+    width: 0;
+    background-color: #00e7cc;
+    transition: .5s ease;
+  }
+  
+  .btn2:hover {
+    transition-delay: .5s;
+  }
+  
+  .btn2:hover::before {
+    width: 100%;
+  }
+
+  
+  .btn2:hover::after {
+    height: 100%;
+    transition-delay: 0.4s;
+    color: aliceblue;
+  }

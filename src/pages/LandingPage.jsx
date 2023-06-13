@@ -15,8 +15,10 @@ function LandingPage() {
           En <span className="faltaUno">FALTA-UNO</span> encontraras lo que
           estas buscando
         </h3>
-        <button className='botonLanding' onClick={() => {navigate("/inicio");}}>ME FALTA UNO</button>
+        <button className='botonLanding' onClick={() => {navigate("/inicio")}}>ME FALTA UNO</button>
+        
       </div>
+      <button class="btn2 mt-5" onClick={() => {navigate("/about")}}>Mas información</button>
     </div>
   )
 }
