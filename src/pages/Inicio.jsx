@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 function Inicio() {
-    const { setUsuario } = useContext(Context);
+    const { setUsuario, setToken } = useContext(Context);
     const navigate = useNavigate();
     const [usuario, setUsuarioLogin] = useState({
       username: "",
@@ -29,8 +29,8 @@ function Inicio() {
         if (!username || !password) return alert("Email y password obligatorias");
         
         const response = await axios.post(urlServer + endpoint, usuario);
-        const { token, usuario: datosUsuario } = response.data;
-        localStorage.setItem("token", token);
+        const { token: authToken , usuario: datosUsuario } = response.data;
+        setToken(authToken);
         const fotoPerfilBase64 = datosUsuario.foto_perfil.replace(/^data:image\/[a-z]+;base64,/, '');
         const datosUsuario2 = { ...datosUsuario, foto_perfil: fotoPerfilBase64 }; // Actualizar los datos del usuario
         setUsuario(datosUsuario2);
@@ -41,9 +41,6 @@ function Inicio() {
         console.log(message);
       }
     };
-    
-
- 
     
 
   return (

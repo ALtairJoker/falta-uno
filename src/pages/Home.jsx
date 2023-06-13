@@ -1,6 +1,7 @@
 import React from 'react';
 import Context from '../../Context';
-import { useState, useContext, useEffect } from 'react';
+import { useState, useContext, useEffect, useRef } from 'react';
+import axios from "axios";
 import './css/home.css';
 import Loaders from '../components/Loaders'
 import Locaciones from '../components/Locaciones';
@@ -8,24 +9,32 @@ import Cards from '../components/Cards';
 import {useForm} from 'react-hook-form'
 
 function Home() {
-  const { usuario } = useContext(Context);
+  const { usuario, token } = useContext(Context);
 
   const {register, formState: {errors} ,handleSubmit, setValue, watch  } = useForm();
 
   const [jugadores, setJugadores] = useState([]);
   const [total, setTotal] = useState('');
   const [cargando, setCargando] = useState(false);
+  const [paginaActual, setPaginaActual] = useState(1);
+
+  const [jugadoresPorPagina] = useState(9); // Cantidad de jugadores por página
+
+  // Calcula el número total de páginas
+const totalPages = Math.ceil(total / jugadoresPorPagina);
 
   useEffect(() => {
     obtenerJugadores();
-  }, []);
+  }, [paginaActual]);
 
   const obtenerJugadores = async () => {
     try {
       setCargando(true);
-      const response = await fetch('http://localhost:3000/jugadores');
-      const data = await response.json();
-      console.log(data);
+      const response = await axios.get('http://localhost:3000/jugadores', {
+        headers: { Authorization: "Bearer " + token },
+        params: { page: paginaActual }
+      });
+      const data = response.data; 
       setTotal(data.totalJugadores)
       setJugadores(data.result);
 
@@ -34,7 +43,39 @@ function Home() {
     }
     setCargando(false);
   };
-  console.log(jugadores);
+
+  const seleccionarComuna = async (data) => {
+    const userData = { ...data };
+    const comunaSeleccionada = watch('comuna');
+    userData.comuna = comunaSeleccionada;
+  
+    try {
+      setCargando(true);
+      const response = await axios.get(`http://localhost:3000/jugadores/${comunaSeleccionada}`, {
+        headers: { Authorization: "Bearer " + token },
+        params: { page: paginaActual }
+      });
+      const data = response.data;
+      console.log(data);
+      setJugadores(data);
+    } catch (error) {
+      console.log(error);
+    }
+  
+    setCargando(false);
+  };
+
+  const avanzarPagina = () => {
+    if (paginaActual < totalPages) {
+      setPaginaActual(paginaActual + 1);
+    }
+  };
+
+  const retrocederPagina = () => {
+    if (paginaActual > 1) {
+      setPaginaActual(paginaActual - 1);
+    }
+  };
 
   const fechaNacimiento = new Date(usuario.nacimiento);
   const fechaActual = new Date();
@@ -83,26 +124,37 @@ function Home() {
         </div>
         </div>
        
-        <div className='contenedorJugadores'>
+        <div className='contenedorJugadores mb-5'>
           <p>Jugadores totales en el pais: {total}</p>
-              <h2>Buscar jugadores por comuna</h2>             
-          <Locaciones register={register}/>
-          <button>Buscar</button>
+              <h2>Buscar jugadores por comuna</h2>
+              <form onSubmit={handleSubmit(seleccionarComuna)}>            
+                <Locaciones register={register} />
+                <input type="submit" class="btn1 mt-3 mb-5" value="Buscar"></input>
+              </form> 
+          
           {cargando ? (
             <Loaders />
           ) : (
             <div className='jugadores mt-3'>
-              {jugadores.map((jugador) => (
-                <Cards 
-                image={`data:image/jpeg;base64,${jugador.foto_perfil}`}
-                usuario={jugador.usuario}
-                dorsal={jugador.dorsal}
-                nacimiento={jugador.nacimiento}
-                posiciones={jugador.posiciones}
-                />
-              ))}
+              {jugadores.length === 0 ? (
+                  <h2>No hay jugadores para la comuna seleccionada.</h2>
+              ) : (
+                jugadores.map((jugador) => (
+                  <Cards 
+                    image={`data:image/jpeg;base64,${jugador.foto_perfil}`}
+                    usuario={jugador.usuario}
+                    dorsal={jugador.dorsal}
+                    nacimiento={jugador.nacimiento}
+                    posiciones={jugador.posiciones}
+                  />
+                ))
+              )}
             </div>
           )}
+           <div className='paginacion m-4'>
+                <i class='bx bxs-skip-previous-circle bx-lg bx-fade-left-hover' onClick={retrocederPagina} disabled={paginaActual === 1} ></i>
+                <i class='bx bxs-skip-next-circle bx-lg bx-fade-right-hover' onClick={avanzarPagina} disabled={paginaActual >= totalPages}></i>
+            </div>
         </div>
       </div>
     </div>

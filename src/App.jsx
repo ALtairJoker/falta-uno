@@ -14,13 +14,12 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 function App() {
 
   const [usuario, setUsuario] = useState(null);
+  const [token, setToken] = useState(null);
 
-  
-  const logout = () => setUsuario(null)
 
   return (
     <div>
-      <Context.Provider value={{ usuario, setUsuario }} >
+      <Context.Provider value={{ usuario, setUsuario, token, setToken }} >
         <Router>
             <Navegation />
           <Routes>

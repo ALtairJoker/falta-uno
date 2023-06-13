@@ -7,11 +7,12 @@
 .nombreUsuario{
     color: yellowgreen;
     text-shadow: rgb(65, 247, 45) 1px 0 10px;
+    font-family: 'Verona FFF', sans-serif;
+                                                
 }
 
 .imagenUsuario{
     width: 200px;
-    border-radius: 50%;
 }
 
 .jugadorUsuario {
@@ -55,6 +56,12 @@
     box-shadow: 3px 3px 10px rgba(0, 0, 0, 1),
       -1px -1px 6px rgba(255, 255, 255, 0.4), inset 3px 3px 10px rgba(0, 0, 0, 1),
       inset -1px -1px 6px rgba(255, 255, 255, 0.4);
+  }
+
+  .paginacion{
+    display: flex;
+    width: 200px;
+    justify-content: center;
   }
 
   @media (max-width: 992px) {

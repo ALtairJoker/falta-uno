@@ -35,7 +35,6 @@ function Registro2() {
         formData.append(key, value);
       }
     });
-    console.log(formData);
     const urlServer = "http://localhost:3000";
     const endpoint = "/jugadores";
     
