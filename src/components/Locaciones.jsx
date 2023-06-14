@@ -14,7 +14,7 @@ function Locaciones({register}) {
 
   const obtenerLocaciones = async () => {
     try {
-      const response = await fetch("../locaciones.json");
+      const response = await fetch("../../locaciones.json");
       const data = await response.json();
       setLocaciones(data.regions);
     } catch (error) {
