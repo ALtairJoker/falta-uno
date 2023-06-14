@@ -7,6 +7,7 @@ import Resizer from "react-image-file-resizer";
 import Loaders from '../components/Loaders'
 import Locaciones from "../components/Locaciones";
 
+
 function Registro() {
 
   const {register, formState: {errors} ,handleSubmit, setValue, watch  } = useForm();

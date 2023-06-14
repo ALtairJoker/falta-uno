@@ -1,5 +1,6 @@
 import React from 'react'
 import { useState, useEffect } from "react";
+import datos from './chile.json';
 
 function Locaciones({register}) {
 
@@ -8,19 +9,9 @@ function Locaciones({register}) {
     const [comunas, setComunas] = useState([]);
 
     
-  useEffect(() => {
-    obtenerLocaciones();
-  }, []);
-
-  const obtenerLocaciones = async () => {
-    try {
-      const response = await fetch("./locaciones.json");
-      const data = await response.json();
-      setLocaciones(data.regions);
-    } catch (error) {
-      alert(error);
-    }
-  };
+    useEffect(() => {
+      setLocaciones(datos.regions); // Usar el contenido del archivo JSON importado
+    }, []);
 
   const handleChangeRegion = (e) => {
     const region = e.target.value;
