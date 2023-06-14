@@ -30,7 +30,7 @@ const totalPages = Math.ceil(total / jugadoresPorPagina);
   const obtenerJugadores = async () => {
     try {
       setCargando(true);
-      const response = await axios.get('http://localhost:3000/jugadores', {
+      const response = await axios.get('https://server-falta-uno.vercel.app/jugadores', {
         headers: { Authorization: "Bearer " + token },
         params: { page: paginaActual }
       });
@@ -51,7 +51,7 @@ const totalPages = Math.ceil(total / jugadoresPorPagina);
   
     try {
       setCargando(true);
-      const response = await axios.get(`http://localhost:3000/jugadores/${comunaSeleccionada}`, {
+      const response = await axios.get(`https://server-falta-uno.vercel.app/jugadores/${comunaSeleccionada}`, {
         headers: { Authorization: "Bearer " + token },
         params: { page: paginaActual }
       });

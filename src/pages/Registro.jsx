@@ -38,7 +38,7 @@ function Registro() {
   const onSubmit = async (data) => {
     setLoading(true);
     // Realizar la solicitud GET para verificar si el usuario existe
-    const response = await fetch(`http://localhost:3000/verificar-usuario/${data.usuario}`);
+    const response = await fetch(`https://server-falta-uno.vercel.app/verificar-usuario/${data.usuario}`);
     const result = await response.json();
 
     if (result.exists) {

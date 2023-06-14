@@ -7,6 +7,7 @@ import Registro2 from './pages/Registro2';
 import LandingPage from './pages/LandingPage';
 import Contacto from './pages/Contacto';
 import About from './pages/About';
+import Perfil from './pages/Perfil';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navegation from './components/Navegation';
 import { useState } from 'react';
@@ -33,6 +34,7 @@ function App() {
             <Route path="/registro2" element={<Registro2 />} />
             <Route path="/about" element={<About />} />
             <Route path="/jugador/:id" element={<Contacto />} />
+            <Route path="/perfil/" element={<Perfil />} />
           </Routes>
         </Router>
       </Context.Provider>
