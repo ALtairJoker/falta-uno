@@ -55,6 +55,7 @@ function Inicio() {
     return (
       <div className="contenedor-principal">
         <div className="contenedor-form mt-2">
+          {loading && <Loaders />}
           <h2>Login</h2>
           <div className="container1">
             <input
@@ -76,13 +77,9 @@ function Inicio() {
             ></input>
             <label className="label1">Contraseña</label>
           </div>
-          {loading ? (
-            <Loaders />
-          ) : (
-            <button class="btn1 mb-5" onClick={login}>
-              Ingresar
-            </button>
-          )}
+          <button class="btn1 mb-5" onClick={login} disabled={loading}>
+            Ingresar
+          </button>
         </div>
       </div>
     );

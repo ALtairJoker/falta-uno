@@ -7,7 +7,6 @@ import Resizer from "react-image-file-resizer";
 import Loaders from '../components/Loaders'
 import Locaciones from "../components/Locaciones";
 
-
 function Registro() {
 
   const {register, formState: {errors} ,handleSubmit, setValue, watch  } = useForm();
@@ -17,6 +16,8 @@ function Registro() {
   const [loading, setLoading] = useState(false);
 
   const [usuarioExistente, setUsuarioExistente] = useState(false);
+
+  const URL_SERVER = 'https://server-falta-uno.vercel.app';
 
   useEffect(() => {
     cargarDatosGuardados();
@@ -34,12 +35,10 @@ function Registro() {
   }; 
 
 
+
  
 
   const onSubmit = async (data) => {
-
-    const URL_SERVER = 'https://server-falta-uno.vercel.app';
-
     setLoading(true);
     // Realizar la solicitud GET para verificar si el usuario existe
     const response = await fetch(`${URL_SERVER}/verificar-usuario/${data.usuario}`);
@@ -52,18 +51,10 @@ function Registro() {
        //El usuario no existe, continuar con el registro
       const userData = { ...data };
       delete userData.confirmPassword;
-
-      // Verificar si se seleccionó una imagen
-    if (data.fotoPerfil) {
-      const file = userData.fotoPerfil[0]; // Obtener el archivo de imagen seleccionado
-      const resizedImage = await resizeAndCompressImage(file); // Realizar la compresión de la imagen
-      const base64Image = resizedImage.replace(/^data:image\/[a-z]+;base64,/, '');
-      userData.fotoPerfil = base64Image; // Agregar la imagen comprimida sin el prefijo al objeto userData
-    } else {
-      // No se seleccionó una imagen, utilizar una imagen predeterminada
-      userData.fotoPerfil = '/img/body.jpeg'
-    }
       const file = userData.fotoPerfil[0]; // Obtiene el archivo de imagen seleccionado
+      const resizedImage = await resizeAndCompressImage(file); // Realiza la compresión de la imagen
+      const base64Image = resizedImage.replace(/^data:image\/[a-z]+;base64,/, '');
+      userData.fotoPerfil = base64Image; // Agrega la imagen comprimida sin el prefijo al objeto userData
       localStorage.setItem('usuario', JSON.stringify(userData));
       navigate("/registro2", { state: { usuario: userData } });
       setLoading(false);
@@ -211,7 +202,7 @@ function Registro() {
           </div>
         </div>
         <Locaciones register={register}/>
-        <label className="label1">Foto de Perfil <span>(max. 10MB)</span> </label>
+        <label className="label1">Foto de Perfil <span>(max. 10MB)</span> * (obligatoria) </label>
         <input
               type="file"
               accept="image/jpg, image/jpeg, image/png"
