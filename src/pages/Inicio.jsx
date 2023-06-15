@@ -4,10 +4,17 @@ import Context from "../../Context";
 import "./css/inicio.css";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import Loaders from '../components/Loaders'
 
 function Inicio() {
+
+
     const { setUsuario, setToken } = useContext(Context);
+
     const navigate = useNavigate();
+
+    const [loading, setLoading] = useState(false);
+
     const [usuario, setUsuarioLogin] = useState({
       username: "",
       password: ""
@@ -22,13 +29,14 @@ function Inicio() {
     };
     
     const login = async () => {
-      const urlServer = "https://server-falta-uno.vercel.app";
+      setLoading(true);
+      const URL_SERVER = 'https://server-falta-uno.vercel.app';
       const endpoint = "/login";
       const { username, password } = usuario;
       try {
         if (!username || !password) return alert("Email y password obligatorias");
         
-        const response = await axios.post(urlServer + endpoint, usuario);
+        const response = await axios.post(URL_SERVER + endpoint, usuario);
         const { token: authToken , usuario: datosUsuario } = response.data;
         setToken(authToken);
         const fotoPerfilBase64 = datosUsuario.foto_perfil.replace(/^data:image\/[a-z]+;base64,/, '');
@@ -40,6 +48,7 @@ function Inicio() {
         alert(message + " 🙁");
         console.log(message);
       }
+      setLoading(false);
     };
     
 

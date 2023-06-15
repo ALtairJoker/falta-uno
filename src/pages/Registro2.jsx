@@ -35,6 +35,8 @@ function Registro2() {
         formData.append(key, value);
       }
     });
+
+    const URL_SERVER = 'http://localhost:5000';
     const urlServer = "https://server-falta-uno.vercel.app";
     const endpoint = "/jugadores";
     

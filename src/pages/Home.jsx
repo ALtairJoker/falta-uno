@@ -13,6 +13,9 @@ function Home() {
 
   const {register, formState: {errors} ,handleSubmit, setValue, watch  } = useForm();
 
+  const URL_SERVER = 'https://server-falta-uno.vercel.app';
+  
+  /* const URL_SERVER = 'http://localhost:5000'; */
  
   const [total, setTotal] = useState('');
   const [cargando, setCargando] = useState(false);
@@ -30,7 +33,7 @@ const totalPages = Math.ceil(total / jugadoresPorPagina);
   const obtenerJugadores = async () => {
     try {
       setCargando(true);
-      const response = await axios.get('https://server-falta-uno.vercel.app/jugadores', {
+      const response = await axios.get(`${URL_SERVER}/jugadores`, {
         headers: { Authorization: "Bearer " + token },
         params: { page: paginaActual }
       });
@@ -51,12 +54,11 @@ const totalPages = Math.ceil(total / jugadoresPorPagina);
   
     try {
       setCargando(true);
-      const response = await axios.get(`https://server-falta-uno.vercel.app/jugadores/${comunaSeleccionada}`, {
+      const response = await axios.get(`${URL_SERVER}jugadores/${comunaSeleccionada}`, {
         headers: { Authorization: "Bearer " + token },
         params: { page: paginaActual }
       });
       const data = response.data;
-      console.log(data);
       setJugadores(data);
     } catch (error) {
       console.log(error);
@@ -115,7 +117,7 @@ const totalPages = Math.ceil(total / jugadoresPorPagina);
           <h4>Edad: {edad}</h4>
           {esCumpleaños && <h4 className='nombreUsuario'>¡Feliz cumpleaños!</h4>}
           </div>
-          <div className='mt-5 jugadorUsuario'>
+          <div className='mt-5 jugadorUsuario simbologia'>
             <p>PT = Portero</p>
             <p>DC = Defensa</p>
             <p>LT = Lateral</p>

@@ -1,45 +1,9 @@
-.orden{
-    display: grid;
-    grid-template-columns: 1fr 3fr;
-    gap: 3rem;
-}
-
-.nombreUsuario{
-    color: yellowgreen;
-    text-shadow: rgb(65, 247, 45) 1px 0 10px;
-    font-family: 'Verona FFF', sans-serif;
-                                                
-}
-
-.imagenUsuario{
-    width: 200px;
-}
-
-.jugadorUsuario {
-    animation: opacidad 4s 1 forwards;
+.ordenPerfil{
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 300px;
-    height: 25em;
-    color: aliceblue;
-    border-radius: 6px;
-    background-color: transparent;
-    border: 2px solid transparent;
-    border-radius: 30px;
-    box-shadow: 3px 3px 10px rgba(0, 0, 0, 1),
-      -1px -1px 6px rgba(255, 255, 255, 0.4), inset 3px 3px 10px rgba(0, 0, 0, 1),
-      inset -1px -1px 6px rgba(255, 255, 255, 0.4);
-  }
+    grid-template-columns: 1fr 3fr;
+}
 
-  .jugadores{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 3rem;
-  }
-
-  .contenedorJugadores{
+.jugadorPerfil {
     animation: opacidad 4s 1 forwards;
     display: flex;
     flex-direction: column;
@@ -47,10 +11,10 @@
     align-items: center;
     width: auto;
     height: auto;
+    padding: 2em;
     color: aliceblue;
     border-radius: 6px;
     background-color: transparent;
-    padding: 1em 3em;
     border: 2px solid transparent;
     border-radius: 30px;
     box-shadow: 3px 3px 10px rgba(0, 0, 0, 1),
@@ -58,45 +22,42 @@
       inset -1px -1px 6px rgba(255, 255, 255, 0.4);
   }
 
-  .paginacion{
+  .contenedor-registro-perfil {
+    animation: opacidad 4s 1 forwards;
     display: flex;
-    width: 200px;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
+    color: aliceblue;
+    border-radius: 6px;
+    background-color: transparent;
+    padding: 1em 0;
+    border: 2px solid transparent;
+    border-radius: 30px;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 1),
+      -1px -1px 6px rgba(255, 255, 255, 0.4), inset 3px 3px 10px rgba(0, 0, 0, 1),
+      inset -1px -1px 6px rgba(255, 255, 255, 0.4);
   }
 
   @media (max-width: 992px) {
-    .orden{
-      display: flex;
-      flex-direction: column;
-      padding-top: 200px;
+    .ordenPerfil{
+        display: flex;
+        flex-direction: column;
     }
-
-    .jugadores {
-      display: grid;
-      grid-template-columns:1fr 1fr;
-      gap: 3rem;
-    }
-
-    .simbologia{
-      display: none;
+    .jugadorPerfil{
+        margin-top: 4em;
     }
   
   }
   
   @media (max-width: 576px) {
-    .orden{
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      padding-top: 200px;
+    .ordenPerfil{
+        display: flex;
+        flex-direction: column;
     }
-    .jugadores {
-      display: flex;
-      flex-direction: column;
-    }
-    .simbologia{
-      display: none;
+    .jugadorPerfil{
+        margin-top: 4em;
     }
   }
 
+  
