@@ -30,7 +30,9 @@ function Inicio() {
     
     const login = async () => {
       setLoading(true);
+      
       const URL_SERVER = 'https://server-falta-uno.vercel.app';
+      /* const URL_SERVER = 'http://localhost:5000'; */
       const endpoint = "/login";
       const { username, password } = usuario;
       try {

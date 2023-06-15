@@ -54,7 +54,7 @@ const totalPages = Math.ceil(total / jugadoresPorPagina);
   
     try {
       setCargando(true);
-      const response = await axios.get(`${URL_SERVER}jugadores/${comunaSeleccionada}`, {
+      const response = await axios.get(`${URL_SERVER}/jugadores/${comunaSeleccionada}`, {
         headers: { Authorization: "Bearer " + token },
         params: { page: paginaActual }
       });
