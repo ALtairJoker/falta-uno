@@ -29,7 +29,8 @@ function BasicExample( {image, usuario, dorsal, nacimiento, posiciones, id} ) {
   return (
     <div className='contornoCard'>
         <Card style={{ width: '16rem', background: 'rgb(0, 41, 58)', borderRadius: '5px', padding: '1em' }} >
-        <Card.Title className='nombreUsuario fs-3 text'>{`${usuario.charAt(0).toUpperCase()}${usuario.slice(1)}`} {dorsal} </Card.Title>
+        <Card.Title className='nombreUsuario fs-3 text'>{`${usuario.charAt(0).toUpperCase()}${usuario.slice(1)}`}</Card.Title>
+        <Card.Title className='nombreUsuario fs-3 text'>{dorsal} </Card.Title>
         <Card.Img variant="top" src={image} className='imagenCard'/>
         <Card.Body >   
             <Card.Text className='fs-4 '>{edad} años</Card.Text>
