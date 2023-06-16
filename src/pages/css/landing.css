@@ -20,7 +20,7 @@
       transform: translateX(200%);
     }
     to {
-      transform: translateX(0%); /* Agregamos un punto final para centrar */
+      transform: translateX(0%);
     }
   }
   
@@ -147,4 +147,31 @@
     height: 100%;
     transition-delay: 0.4s;
     color: aliceblue;
+  }
+
+  @media (max-width: 992px) {
+    .h2-animation-de{
+      animation: mover-d-i 2s 1 forwards;
+      transform: translateX(200%);
+    }
+    .botonLanding{
+      animation: opacidadBoton 2s 1 forwards;
+    }
+    .btn2{
+      animation: opacidadBoton 2s 1 forwards;
+    }
+  
+  }
+  
+  @media (max-width: 576px) {
+    .h2-animation-de{
+      animation: mover-d-i 2s 1 forwards;
+      transform: translateX(200%);
+    }
+    .botonLanding{
+      animation: opacidadBoton 2s 1 forwards;
+    }
+    .btn2{
+      animation: opacidadBoton 2s 1 forwards;
+    }
   }

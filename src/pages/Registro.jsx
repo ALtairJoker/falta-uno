@@ -204,14 +204,16 @@ function Registro() {
           </div>
         </div>
         <Locaciones register={register}/>
-        <label className="label1">Foto de Perfil <span>(max. 10MB)</span> * (obligatoria) </label>
+        <label className="label1">Foto de Perfil <span>(max. 10MB)</span> <span style={{color:'crimson'}}>(foto requerida)* </span></label>
         <input
               type="file"
               accept="image/jpg, image/jpeg, image/png"
-              {...register('fotoPerfil')}
+              {...register('fotoPerfil', {
+                required: true
+              })}
               multiple={false}
             ></input>
-            
+           {errors.fotoPerfil?.type === 'required' && <p className="error">La imagen es requerida</p>}
         <input type="submit" class="btn1 mt-3 mb-5" value="Siguiente"></input>
 
       </form>

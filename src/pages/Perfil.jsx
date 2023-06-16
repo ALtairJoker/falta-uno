@@ -322,6 +322,12 @@ function Perfil() {
                 value="guardar"
               ></input>
             </form>
+            <input
+                type="button"
+                class="btn1 mt-3 mb-5"
+                value="Volver"
+                onClick={()=> navigate('/home')}
+              ></input>
             {/* <form className="contenedor-registro" onSubmit={handleSubmit(cambiarCaracteristicas)} >
         <Form>
           <h2>Editar caracteristicas</h2>

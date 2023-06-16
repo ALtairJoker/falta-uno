@@ -90,10 +90,6 @@
       grid-template-columns:1fr 1fr;
       gap: 3rem;
     }
-
-    .simbologia{
-      display: none;
-    }
   
   }
   
@@ -103,14 +99,11 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      padding-top: 200px;
+      margin: 0 2em;
     }
     .jugadores {
       display: flex;
       flex-direction: column;
-    }
-    .simbologia{
-      display: none;
     }
   }
 
