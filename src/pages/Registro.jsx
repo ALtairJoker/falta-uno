@@ -1,13 +1,16 @@
 import React from "react";
 import "./css/registro.css";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import {useForm} from 'react-hook-form'
 import Resizer from "react-image-file-resizer";
 import Loaders from '../components/Loaders'
 import Locaciones from "../components/Locaciones";
+import Context from "../../Context";
 
 function Registro() {
+
+  const { URL_SERVER } = useContext(Context);
 
   const {register, formState: {errors} ,handleSubmit, setValue, watch  } = useForm();
 
@@ -17,7 +20,6 @@ function Registro() {
 
   const [usuarioExistente, setUsuarioExistente] = useState(false);
 
-  const URL_SERVER = 'https://server-falta-uno.vercel.app';
 
   useEffect(() => {
     cargarDatosGuardados();

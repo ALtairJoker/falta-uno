@@ -20,10 +20,14 @@ function App() {
   const [token, setToken] = useState(null);
   const [jugadores, setJugadores] = useState([]);
 
+  /* const URL_SERVER = 'https://server-falta-uno.vercel.app'; */
+  
+  const URL_SERVER = 'http://localhost:5000';
+
 
   return (
     <div>
-      <Context.Provider value={{ usuario, setUsuario, token, setToken, jugadores, setJugadores }} >
+      <Context.Provider value={{ usuario, setUsuario, token, setToken, jugadores, setJugadores, URL_SERVER }} >
         <Router>
             <Navegation />
           <Routes>

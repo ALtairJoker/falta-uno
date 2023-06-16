@@ -8,11 +8,25 @@
     color: yellowgreen;
     text-shadow: rgb(65, 247, 45) 1px 0 10px;
     font-family: 'Verona FFF', sans-serif;
-                                                
+    font-size: 2rem;                                          
 }
 
 .imagenUsuario{
     width: 200px;
+    border-radius: 10px;   
+}
+
+.imagenUsuario:hover{
+  animation: zoom 2s 1 forwards;
+}
+
+@keyframes zoom {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.3);
+  }
 }
 
 .jugadorUsuario {
@@ -22,7 +36,7 @@
     justify-content: center;
     align-items: center;
     width: 300px;
-    height: 25em;
+    height: auto;
     color: aliceblue;
     border-radius: 6px;
     background-color: transparent;

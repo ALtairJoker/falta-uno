@@ -12,7 +12,7 @@ import Button from "react-bootstrap/Button";
 import { useNavigate } from "react-router-dom";
 
 function Perfil() {
-  const { usuario, setUsuario, token } = useContext(Context);
+  const { usuario, setUsuario, token, URL_SERVER } = useContext(Context);
 
   const [loading, setLoading] = useState(false);
 
@@ -59,7 +59,6 @@ function Perfil() {
     });
 
   const cambiarDatos = async (data) => {
-    const URL_SERVER = 'https://server-falta-uno.vercel.app';
 
     setLoading(true); // Activa el estado de carga
 
@@ -136,8 +135,6 @@ function Perfil() {
   }; */
   const eliminarPerfil = async () => {
     try {
-      const URL_SERVER = 'https://server-falta-uno.vercel.app';
-
       // Pregunta al usuario si está seguro de eliminar el perfil
       const confirmacion = window.confirm(
         "¿Estás seguro de que deseas eliminar tu perfil? Esta acción no se puede deshacer."

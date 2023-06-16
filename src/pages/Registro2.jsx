@@ -1,16 +1,21 @@
 import React from "react";
 import "./css/registro.css";
 import Form from "react-bootstrap/Form";
-import { useEffect, useState } from "react";
+import { useState, useContext } from "react";
 import { useLocation } from "react-router-dom";
 import {useForm} from 'react-hook-form'
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Loaders from '../components/Loaders'
+import Context from "../../Context";
 
 
 
 function Registro2() {
+
+  const { URL_SERVER } = useContext(Context);
+  const endpoint = "/jugadores";
+
   const location = useLocation();
   const usuario = location.state.usuario;
 
@@ -36,13 +41,9 @@ function Registro2() {
       }
     });
 
-    const URL_SERVER = 'http://localhost:5000';
-    const urlServer = "https://server-falta-uno.vercel.app";
-    const endpoint = "/jugadores";
-    
   
     try {
-      await axios.post(urlServer + endpoint, formData, {
+      await axios.post(URL_SERVER + endpoint, formData, {
         headers: {
           "Content-Type": "multipart/form-data"
         }

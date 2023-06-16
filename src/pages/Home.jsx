@@ -7,16 +7,17 @@ import Loaders from '../components/Loaders'
 import Locaciones from '../components/Locaciones';
 import Cards from '../components/Cards';
 import {useForm} from 'react-hook-form';
+import Button from "react-bootstrap/Button";
+import { useNavigate } from "react-router-dom";
 
 function Home() {
-  const { usuario, token, jugadores, setJugadores } = useContext(Context);
+  const { usuario, token, jugadores, setJugadores, URL_SERVER } = useContext(Context);
 
   const {register, formState: {errors} ,handleSubmit, setValue, watch  } = useForm();
 
-  const URL_SERVER = 'https://server-falta-uno.vercel.app';
-  
-  /* const URL_SERVER = 'http://localhost:5000'; */
- 
+  const navigate = useNavigate();
+
+
   const [total, setTotal] = useState('');
   const [cargando, setCargando] = useState(false);
   const [paginaActual, setPaginaActual] = useState(1);
@@ -116,10 +117,11 @@ const totalPages = Math.ceil(total / jugadoresPorPagina);
           </h3>
           <h4>Edad: {edad}</h4>
           {esCumpleaños && <h4 className='nombreUsuario'>¡Feliz cumpleaños!</h4>}
+          <Button variant="success" className='m-2 border border-light' onClick={() => navigate("/perfil")}>Ver perfil</Button>
           </div>
           <div className='mt-5 jugadorUsuario simbologia'>
             <p>PT = Portero</p>
-            <p>DC = Defensa</p>
+            <p>DF = Defensa</p>
             <p>LT = Lateral</p>
             <p>MC = Mediocampista</p>
             <p>DL = Delantero</p>
