@@ -37,18 +37,6 @@ function Inicio() {
       }
     }, []);
 
-     // Obtener los datos del usuario guardados en el sessionStorage al cargar la página
-  useEffect(() => {
-    const storedUser = sessionStorage.getItem("usuario");
-    if (storedUser) {
-      setUsuario(JSON.parse(storedUser));
-    }
-  }, []);
-
-  // Guardar los datos del usuario en el sessionStorage cuando cambien
-  useEffect(() => {
-    sessionStorage.setItem("usuario", JSON.stringify(usuario));
-  }, [usuario]);
 
     const handleInputChange = (event) => {
       const { name, value } = event.target;

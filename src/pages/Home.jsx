@@ -13,8 +13,6 @@ import { useNavigate } from "react-router-dom";
 function Home() {
   const { usuario, setUsuario, token, jugadores, setJugadores, URL_SERVER } = useContext(Context);
 
-  console.log(usuario);
-
   const {register, formState: {errors} ,handleSubmit, setValue, watch  } = useForm();
 
   const navigate = useNavigate();
@@ -33,19 +31,6 @@ const totalPages = Math.ceil(total / jugadoresPorPagina);
     obtenerJugadores();
   }, [paginaActual]);
 
-  useEffect(() => {
-    // Obtener los datos del usuario guardados en el sessionStorage al cargar la página
-    const storedUser = sessionStorage.getItem("usuario");
-    if (storedUser) {
-      setUsuario(JSON.parse(storedUser));
-    }
-  }, []);
-
-  useEffect(() => {
-    // Guardar los datos del usuario en el sessionStorage cuando cambien
-    sessionStorage.setItem("usuario", JSON.stringify(usuario));
-  }, [usuario]);
-  
 
   const obtenerJugadores = async () => {
     try {
