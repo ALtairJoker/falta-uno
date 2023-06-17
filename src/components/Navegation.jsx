@@ -60,7 +60,7 @@ function Navegation() {
       <Container className="mt-3" >
         <Navbar.Brand to="/inicio">
         <NavLink  to="/" className={setActiveClass}>
-                  <p className="logoNav" onClick={logout}>FALTA-UNO <i class='bx bx-football bx-lg bx-tada '></i></p> 
+                  <p className="logoNav" onClick={logout}>FALTA-UNO <i class='bx bx-football bx-lg bx-spin '></i></p> 
                 </NavLink>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
