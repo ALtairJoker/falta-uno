@@ -371,13 +371,13 @@ function Perfil() {
  <div>
   <h2>Editar características</h2>
   <h4 className="m-3">Posición(es)</h4>
-  <div className="m-3 d-flex">
+  <div className="m-3 d-flex ordenColumna">
     {["Portero", "Defensa", "Lateral", "Mediocampista", "Delantero"].map(
       (posicion) => (
         <div key={posicion}>
-          <label className="m-2 ">
+          <label className="me-2 ">
             <input
-            className="form-check-input"
+            className="form-check-input me-2"
               type="checkbox"
               value={posicion}
               checked={posicionesSeleccionadas.includes(posicion)}
@@ -400,7 +400,7 @@ function Perfil() {
 
 <div>
   <h4 className="m-3">Selecciona los días disponibles</h4>
-  <div className="m-3 d-flex">
+  <div className="m-3 d-flex ordenColumna">
     {[
       "Lunes",
       "Martes",
@@ -413,7 +413,7 @@ function Perfil() {
       <div key={dia}>
         <label className="m-2">
           <input
-          className="form-check-input"
+          className="form-check-input me-2"
             type="checkbox"
             value={dia}
             checked={diasSeleccionados.includes(dia)}

@@ -21,7 +21,6 @@
       -1px -1px 6px rgba(255, 255, 255, 0.4), inset 3px 3px 10px rgba(0, 0, 0, 1),
       inset -1px -1px 6px rgba(255, 255, 255, 0.4);
   }
-
   .contenedor-registro-perfil {
     animation: opacidad 4s 1 forwards;
     margin: 1em;
@@ -48,6 +47,10 @@
     .jugadorPerfil{
         margin-top: 10em;
     }
+    .ordenColumna{
+      display: flex;
+      flex-direction: column;
+    }
   
   }
   
@@ -58,6 +61,10 @@
     }
     .jugadorPerfil{
         margin-top: 10em;
+    }
+    .ordenColumna{
+      display: flex;
+      flex-direction: column;
     }
   }
 

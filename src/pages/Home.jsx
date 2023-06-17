@@ -32,6 +32,7 @@ const totalPages = Math.ceil(total / jugadoresPorPagina);
   }, [paginaActual]);
 
 
+
   const obtenerJugadores = async () => {
     try {
       setCargando(true);
