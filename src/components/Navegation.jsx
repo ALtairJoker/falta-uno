@@ -13,12 +13,15 @@ function Navegation() {
   const setActiveClass = ({ isActive }) => (isActive ? "activo" : "inactivo");
 
   const navigate = useNavigate();
-  const { usuario, setUsuario } = useContext(Context);
+  const { usuario, setUsuario, setToken } = useContext(Context);
+  
   const logout = () => {
     setUsuario(null);
+    setToken(null); // Agrega esta línea para borrar el token
     localStorage.removeItem("token");
     navigate("/inicio");
   };
+  
 
   const [isNavbarVisible, setIsNavbarVisible] = useState(true);
 

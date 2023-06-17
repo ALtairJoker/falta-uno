@@ -11,7 +11,7 @@ import Button from "react-bootstrap/Button";
 import { useNavigate } from "react-router-dom";
 
 function Home() {
-  const { usuario, token, jugadores, setJugadores, URL_SERVER } = useContext(Context);
+  const { usuario, setUsuario, token, jugadores, setJugadores, URL_SERVER } = useContext(Context);
 
   console.log(usuario);
 
@@ -32,6 +32,19 @@ const totalPages = Math.ceil(total / jugadoresPorPagina);
   useEffect(() => {
     obtenerJugadores();
   }, [paginaActual]);
+
+  useEffect(() => {
+    // Obtener los datos del usuario guardados en el sessionStorage al cargar la página
+    const storedUser = sessionStorage.getItem("usuario");
+    if (storedUser) {
+      setUsuario(JSON.parse(storedUser));
+    }
+  }, []);
+
+  useEffect(() => {
+    // Guardar los datos del usuario en el sessionStorage cuando cambien
+    sessionStorage.setItem("usuario", JSON.stringify(usuario));
+  }, [usuario]);
   
 
   const obtenerJugadores = async () => {

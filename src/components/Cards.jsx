@@ -51,7 +51,7 @@ function BasicExample( {image, usuario, dorsal, nacimiento, posiciones, id} ) {
                 ))}
             </Card.Text>
             {esCumpleaños && <h4 className='nombreUsuario'>¡Feliz cumpleaños!</h4>}
-            <Button variant="success" onClick={() => navigate(`/jugador/${id}`)}>Fichar</Button>
+            <Button variant="success" onClick={() => navigate(`/jugador/${id}`)}> <i class='bx bx-edit-alt bx-tada-hover d-flex flex-row-reverse'> Fichar&nbsp;</i></Button>
         </Card.Body>
         </Card>
     </div>

@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import Context from "../../Context";
 import "./css/inicio.css";
 import { useNavigate } from "react-router-dom";
@@ -20,12 +20,43 @@ function Inicio() {
       password: ""
     });
 
+    useEffect(() => {
+      const storedUsername = localStorage.getItem("username");
+      const storedPassword = localStorage.getItem("password");
+      if (storedUsername) {
+        setUsuarioLogin((prevState) => ({
+          ...prevState,
+          username: storedUsername
+        }));
+      }
+      if (storedPassword) {
+        setUsuarioLogin((prevState) => ({
+          ...prevState,
+          password: storedPassword
+        }));
+      }
+    }, []);
+
+     // Obtener los datos del usuario guardados en el sessionStorage al cargar la página
+  useEffect(() => {
+    const storedUser = sessionStorage.getItem("usuario");
+    if (storedUser) {
+      setUsuario(JSON.parse(storedUser));
+    }
+  }, []);
+
+  // Guardar los datos del usuario en el sessionStorage cuando cambien
+  useEffect(() => {
+    sessionStorage.setItem("usuario", JSON.stringify(usuario));
+  }, [usuario]);
+
     const handleInputChange = (event) => {
       const { name, value } = event.target;
       setUsuarioLogin((prevState) => ({
         ...prevState,
         [name]: value
       }));
+      localStorage.setItem(name, value);
     };
     
     const login = async () => {
