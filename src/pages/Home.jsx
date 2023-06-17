@@ -13,6 +13,8 @@ import { useNavigate } from "react-router-dom";
 function Home() {
   const { usuario, token, jugadores, setJugadores, URL_SERVER } = useContext(Context);
 
+  console.log(usuario);
+
   const {register, formState: {errors} ,handleSubmit, setValue, watch  } = useForm();
 
   const navigate = useNavigate();
@@ -30,6 +32,7 @@ const totalPages = Math.ceil(total / jugadoresPorPagina);
   useEffect(() => {
     obtenerJugadores();
   }, [paginaActual]);
+  
 
   const obtenerJugadores = async () => {
     try {

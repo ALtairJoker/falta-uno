@@ -13,6 +13,7 @@ function Contacto() {
   const { id } = useParams();
 
   const jugador = jugadores.filter((jugador) => jugador.id == id);
+  
 
 
   return (

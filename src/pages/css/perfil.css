@@ -7,10 +7,10 @@
     animation: opacidad 4s 1 forwards;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     width: auto;
-    height: auto;
+    height: max-content;
+    margin: 1em;
     padding: 2em;
     color: aliceblue;
     border-radius: 6px;
@@ -24,6 +24,7 @@
 
   .contenedor-registro-perfil {
     animation: opacidad 4s 1 forwards;
+    margin: 1em;
     display: flex;
     flex-direction: column;
     justify-content: center;

@@ -19,10 +19,11 @@ function App() {
   const [usuario, setUsuario] = useState(null);
   const [token, setToken] = useState(null);
   const [jugadores, setJugadores] = useState([]);
-
-  const URL_SERVER = 'https://server-falta-uno.vercel.app';
   
-  /* const URL_SERVER = 'http://localhost:5000'; */
+
+  /* const URL_SERVER = 'https://server-falta-uno.vercel.app'; */
+  
+  const URL_SERVER = 'http://localhost:5000';
 
 
   return (

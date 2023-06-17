@@ -41,6 +41,8 @@ function Registro2() {
       }
     });
 
+    console.log(formData);
+
   
     try {
       await axios.post(URL_SERVER + endpoint, formData, {
